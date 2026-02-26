@@ -1,0 +1,17 @@
+{
+  "name": "rasterize-svg",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "ipaddr.js": "2.3.0",
+    "saxes": "6.0.0",
+    "sharp": "0.34.5"
+  }
+}
