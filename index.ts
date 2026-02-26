@@ -835,7 +835,7 @@ function pngHeaders(signature: string): Headers {
   });
 }
 
-async function handleRequest(request: Request): Promise<Response> {
+export async function handleRequest(request: Request): Promise<Response> {
   const requestId = randomUUID();
   const startedAt = Date.now();
   const requestUrl = new URL(request.url);
@@ -939,12 +939,20 @@ async function handleRequest(request: Request): Promise<Response> {
   }
 }
 
-const server = Bun.serve({
-  port: Number(process.env.PORT ?? 3000),
-  fetch: handleRequest,
-});
+export function startServer(port = Number(process.env.PORT ?? 3000)) {
+  const server = Bun.serve({
+    port,
+    fetch: handleRequest,
+  });
 
-logInfo("server_started", {
-  port: server.port,
-  cacheRoot: process.env.RAILWAY_VOLUME_MOUNT_PATH ?? "/tmp/raster-cache",
-});
+  logInfo("server_started", {
+    port: server.port,
+    cacheRoot: process.env.RAILWAY_VOLUME_MOUNT_PATH ?? "/tmp/raster-cache",
+  });
+
+  return server;
+}
+
+if (import.meta.main) {
+  startServer();
+}

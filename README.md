@@ -50,6 +50,12 @@ Type check:
 bun x tsc --noEmit
 ```
 
+Run tests:
+
+```bash
+bun test
+```
+
 ## Usage examples
 
 HTTPS source:
@@ -121,4 +127,3 @@ This project is designed for Railway Functions (Bun runtime) and Railway volume 
 
 - Functions docs: https://docs.railway.com/functions
 - Volumes docs: https://docs.railway.com/volumes
-
